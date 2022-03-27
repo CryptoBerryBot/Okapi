@@ -1,5 +1,4 @@
 """Kraken public API."""
-
 from typing import Iterable
 
 import httpx
