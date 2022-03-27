@@ -35,6 +35,7 @@ Okapi
    :target: https://github.com/psf/black
    :alt: Black
 
+A HTTPX client for the Kraken REST API.
 
 Features
 --------

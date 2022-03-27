@@ -53,12 +53,12 @@ repos:
         stages: [commit, push, manual]
       - id: bandit
         name: bandit
-        description: 'Bandit is a tool for finding common security issues in Python code'
+        description: "Bandit is a tool for finding common security issues in Python code"
         entry: bandit
         language: python
         language_version: python3
         types: [python]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.4.1
+    rev: v2.6.1
     hooks:
       - id: prettier
