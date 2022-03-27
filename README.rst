@@ -8,7 +8,7 @@ Okapi
 |pre-commit| |Black|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/okapi.svg
-   :target: https://pypi.org/project/okapi/
+   :target: https://pypi.org/project/okapi-client/
    :alt: PyPI
 .. |Status| image:: https://img.shields.io/pypi/status/okapi.svg
    :target: https://pypi.org/project/okapi/
