@@ -5,13 +5,13 @@ from click.testing import CliRunner
 from okapi import __main__
 
 
-@pytest.fixture
-def runner() -> CliRunner:
+@pytest.fixture(name="runner")
+def cli_runner() -> CliRunner:
     """Fixture for invoking command-line interfaces."""
     return CliRunner()
 
 
-def test_main_succeeds(cli_runner: CliRunner) -> None:
+def test_main_succeeds(runner: CliRunner) -> None:
     """It exits with a status code of zero."""
-    result = cli_runner.invoke(__main__.main)
+    result = runner.invoke(__main__.main)
     assert result.exit_code == 0
