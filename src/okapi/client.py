@@ -1,17 +1,15 @@
 """Kraken HTTPX Client."""
-from http.cookiejar import CookieJar
+from typing import Any
+from typing import Mapping
 
 import httpx
-from httpx import Cookies
 from typeguard import typechecked
 
 from . import __version__
 from .auth import KrakenAuth
 
 
-HTTPXClientKwargs = (
-    Cookies | CookieJar | dict[str, str] | list[tuple[str, str]]
-)
+HTTPXClientKwargs = Mapping[str, Any]
 
 
 @typechecked
