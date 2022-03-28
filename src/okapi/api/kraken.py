@@ -11,15 +11,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Command-line interface."""
-import click
+"""Kraken REST API."""
+from typeguard import typechecked
+
+from ..client import Client
+from .market import MarketRESTAPI
+from .user import DataRESTAPI
 
 
-@click.command()
-@click.version_option()
-def main() -> None:
-    """Okapi."""
+@typechecked
+class KrakenRESTAPI:  # pylint: disable=too-few-public-methods
+    """Kraken REST API."""
 
-
-if __name__ == "__main__":
-    main()  # type: ignore  # pragma: no cover
+    def __init__(self, client: Client) -> None:
+        self.market = MarketRESTAPI(client)
+        self.user = DataRESTAPI(client)
