@@ -1,12 +1,17 @@
 """Kraken HTTPX Client."""
-from typing import Any
-from typing import Mapping
+from http.cookiejar import CookieJar
 
 import httpx
+from httpx import Cookies
 from typeguard import typechecked
 
 from . import __version__
 from .auth import KrakenAuth
+
+
+HTTPXClientKwargs = (
+    Cookies | CookieJar | dict[str, str] | list[tuple[str, str]]
+)
 
 
 @typechecked
@@ -22,7 +27,7 @@ class Client(httpx.Client):
         domain: str = "https://api.kraken.com",
         api: str = "public",
         api_version: int = 0,
-        **kwargs: Mapping[str, Any],
+        **kwargs: HTTPXClientKwargs,
     ) -> None:
         super().__init__(
             base_url=f"{domain}/{api_version}",
