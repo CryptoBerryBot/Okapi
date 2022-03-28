@@ -1,6 +1,5 @@
 """Kraken HTTPX Client."""
 from typing import Any
-from typing import Mapping
 
 import httpx
 from typeguard import typechecked
@@ -9,7 +8,7 @@ from . import __version__
 from .auth import KrakenAuth
 
 
-HTTPXClientKwargs = Mapping[str, Any]
+HTTPXClientKwargs = Any
 
 
 @typechecked
