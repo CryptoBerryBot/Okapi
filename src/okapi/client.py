@@ -1,4 +1,7 @@
 """Kraken HTTPX Client."""
+from typing import Any
+from typing import Mapping
+
 import httpx
 from typeguard import typechecked
 
@@ -19,7 +22,7 @@ class Client(httpx.Client):
         domain: str = "https://api.kraken.com",
         api: str = "public",
         api_version: int = 0,
-        **kwargs,
+        **kwargs: Mapping[str, Any],
     ) -> None:
         super().__init__(
             base_url=f"{domain}/{api_version}",
