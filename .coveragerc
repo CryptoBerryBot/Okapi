@@ -1,0 +1,5 @@
+[report]
+fail_under = 0
+precision = 2
+skip_covered = true
+show_missing = true
