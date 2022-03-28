@@ -35,7 +35,6 @@ class Client(httpx.Client):
         secret: str | None = None,
         name: str = f"okapi/{__version__}",
         domain: str = "https://api.kraken.com",
-        api: str = "public",
         api_version: int = 0,
         **kwargs: HTTPXClientKwargs,
     ) -> None:
@@ -45,4 +44,3 @@ class Client(httpx.Client):
             headers={"User-Agent": name},
             **kwargs,
         )
-        self.api = api
