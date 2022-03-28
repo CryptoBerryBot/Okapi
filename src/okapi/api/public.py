@@ -17,7 +17,7 @@ class PublicAPI:
 
     def time(self) -> httpx.Response:
         """Get the server's time."""
-        return self.client.post(url=self.client._url("Time"))
+        return self.client.post(url=self.client.url("Time"))
 
     def ohlc(
         self,
@@ -36,6 +36,6 @@ class PublicAPI:
             data["since"] = since
 
         return self.client.post(
-            url=self.client._url("OHLC"),
+            url=self.client.url("OHLC"),
             data=data,
         )
