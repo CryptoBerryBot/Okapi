@@ -45,7 +45,7 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     Args:
         session: The Session object.
     """
-    assert session.bin is not None  # noqa: S101 noseq
+    assert session.bin is not None  # noqa: S101  # nosec
 
     virtualenv = session.env.get("VIRTUAL_ENV")
     if virtualenv is None:
@@ -163,11 +163,7 @@ def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     session.install(".")
     session.install("pytest", "typeguard", "pygments")
-    session.run(
-        "pytest",
-        f"--typeguard-packages={PACKAGE}",
-        *session.posargs
-    )
+    session.run("pytest", f"--typeguard-packages={PACKAGE}", *session.posargs)
 
 
 @nox_session(python=PYTHON_VERSIONS)

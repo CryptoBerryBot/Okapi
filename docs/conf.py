@@ -1,6 +1,8 @@
 """Sphinx configuration."""
 from datetime import datetime
 
+# pylint: disable=C0103,W0622
+
 
 project = "Okapi"
 author = "Romain Brault"

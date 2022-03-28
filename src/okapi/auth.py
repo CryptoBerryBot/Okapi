@@ -5,7 +5,6 @@ import hmac
 import urllib.parse
 from dataclasses import dataclass
 from typing import Generator
-from typing import Optional
 
 import httpx
 from typeguard import typechecked
@@ -21,8 +20,8 @@ def _nonce_from_request(request: httpx.Request) -> str:
 class KrakenAuth(httpx.Auth):
     """HTTPX Authentication class for the Kraken REST API."""
 
-    key: Optional[str] = None
-    secret: Optional[str] = None
+    key: str | None = None
+    secret: str | None = None
 
     def sign_request(self, request: httpx.Request) -> str:
         """Give the signature for a request
