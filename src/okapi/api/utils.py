@@ -14,9 +14,16 @@
 """Utility functions for the Kraken API."""
 import time
 
+import httpx
+from typeguard import typechecked
+
+from ..exception import KrakenAPIError
+
+
 KrakenData = dict[str, int | bool | str]
 
 
+@typechecked
 def nonce() -> str:
     """Return a nounce counter (monotonic clock).
 
@@ -26,6 +33,7 @@ def nonce() -> str:
     return str(time.monotonic_ns())
 
 
+@typechecked
 def nonce_data(data: KrakenData | None = None) -> KrakenData:
     """Add the nounce data to existing data."""
     if data is None:
@@ -34,11 +42,24 @@ def nonce_data(data: KrakenData | None = None) -> KrakenData:
     return {"nonce": nonce(), **data}
 
 
+@typechecked
 def public_url(method: str) -> str:
     """Return the private URL for a given method."""
     return f"public/{method}"
 
 
+@typechecked
 def private_url(method: str) -> str:
     """Return the private URL for a given method."""
     return f"private/{method}"
+
+
+@typechecked
+def content(response: httpx.Response) -> dict[str, str | list[str]]:
+    """Check a response for error."""
+    response.raise_for_status()
+    json = response.json()
+    if len(json["error"]) > 0:
+        raise KrakenAPIError(json["error"])
+
+    return json["result"]
