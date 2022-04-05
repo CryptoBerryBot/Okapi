@@ -37,7 +37,7 @@ Okapi
 
 A HTTPX client for the Kraken REST API.
 
-DEPRECATED: Use cctx: https://github.com/ccxt/ccxt
+DEPRECATED: Use CCXT: https://github.com/ccxt/ccxt
 
 
 Features
